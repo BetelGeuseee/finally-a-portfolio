@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BetelGeuseee</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
+    :root {
+      --bg-color: #0d0f0f;
+      --text-color: #d0e8d0;
+      --accent-color: #4caf50;
+      --card-bg: #1a1c1a;
+      --card-shadow: rgba(0, 255, 0, 0.2);
+      --link-hover: #66ff66;
+      --transition-speed: 0.3s;
+    }
+    [data-theme="light"] {
+      --bg-color: #f4f4f9;
+      --text-color: #333;
+      --accent-color: #4caf50;
+      --card-bg: white;
+      --card-shadow: rgba(0, 0, 0, 0.1);
+      --link-hover: #66bb66;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Fira Code', monospace;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+    /* Header (Nav Bar) Styles */
+    header {
+      background: linear-gradient(135deg, var(--accent-color) 0%, darkgreen 100%);
+      color: var(--bg-color);
+      padding: 1rem 1rem; /* Reduced padding for smaller height */
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: background var(--transition-speed);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem; /* Smaller font size */
+    }
+    header p {
+      margin: 0.3rem 0 0;
+      font-size: 1rem; /* Adjusted font size */
+    }
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+      font-size: 2rem;
+    }
+    /* Tools Section */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+      align-items: center;
+    }
+    .tool-card {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--card-shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px var(--card-shadow);
+    }
+    .tool-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    /* Projects Section */
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 0;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px var(--card-shadow);
+    }
+    .project-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .project-card-content {
+      padding: 1rem;
+    }
+    .project-card-content strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    /* Contact Section */
+    .contact-links a {
+      display: inline-block;
+      margin: 0.3rem 0;
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color var(--transition-speed);
+    }
+    .contact-links a:hover {
+      color: var(--link-hover);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      margin-top: 2rem;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem; /* Adjusted padding */
+      cursor: pointer;
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+      z-index: 1000;
+      font-size: 0.9rem;
+    }
+    .theme-toggle:hover {
+      background-color: var(--bg-color);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+    }
+    .about-text {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--card-shadow);
+      line-height: 1.6;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .theme-toggle {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <header>
+    <h1>Shirshak Upadhayay</h1>
+    <p>Recreational Programmer</p>
+  </header>
+  <main>
+    <!-- About Section -->
+    <section>
+      <h2>About Me</h2>
+      <div class="about-text">
+        <p>I am a recreational programmer from Nepal. I enjoy peeling back the comfortable layers of abstraction in technology to uncover what lies beneath, often reinventing the wheel.
+        </p>
+      </div>
+    </section>
+    <!-- Tools Section -->
+    <section>
+      <h2>Tools</h2>
+      <div class="tools-grid">
+        <div class="tool-card" title="Java">
+          <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java Logo">
+        </div>
+        <div class="tool-card" title="C">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/The_C_Programming_Language_logo.svg" alt="C Logo">
+          </div>
+        <div class="tool-card" title="Python">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
+        </div>
+        <div class="tool-card" title="Rust">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg" alt="Rust">
+        </div>
+        <div class="tool-card" title="Javascript">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="Javascript">
+        </div>
+        <div class="tool-card" title="PostgreSQL">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" alt="PostgreSQL Logo">
+        </div>
+        <div class="tool-card" title="Linux">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Linux">
+        </div>
+        <div class="tool-card" title="AWS">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS">
+          </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section>
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <div class="project-card">
+            <div class="project-card-content">
+              <strong>Arcane - A Programming Language</strong>
+              <h4>Ongoing</h4>
+              <p>The programming language where you cast spells. Interpreter that uses Recursive Descent Parser to parser expression. It is built using Java.</p>
+              <a href="https://github.com/BetelGeuseee/Arcane" target="_blank" rel="noopener">View Project</a>
+            </div>
+          </div>
+        <div class="project-card">
+          <img src="https://private-user-images.githubusercontent.com/60252466/406658399-2d7ccf6c-d9c1-4414-91db-0d7c720d3fc7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzc4MDUyODksIm5iZiI6MTczNzgwNDk4OSwicGF0aCI6Ii82MDI1MjQ2Ni80MDY2NTgzOTktMmQ3Y2NmNmMtZDljMS00NDE0LTkxZGItMGQ3YzcyMGQzZmM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI1VDExMzYyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdjNDc0OGEwZTdiNmE0YTc2MGRkZWU0N2RkZmQ2ZGYwZjc0YzEyNTE0NWQ0YmM0NWYwMjZjNTIzOTU0MWUwZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.n8q67dAKAZCcEA2w1c2gh59LCr2hkUXRYKo9V1lQ9AA" alt="Project Image">
+          <div class="project-card-content">
+            <strong>HL7 Message Sender</strong>
+            <p>This client mimics the vitals transmission from monitor by sending vitals in HL7 message packets. </p>
+            <a href="https://github.com/BetelGeuseee/vitals-signs-monitor-mimic" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </div>
+        <div class="project-card">
+            <img src="https://private-user-images.githubusercontent.com/60252466/406659468-5a62bbeb-f03e-45eb-9c93-74889f4f6ee5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzc4MDY2MzUsIm5iZiI6MTczNzgwNjMzNSwicGF0aCI6Ii82MDI1MjQ2Ni80MDY2NTk0NjgtNWE2MmJiZWItZjAzZS00NWViLTljOTMtNzQ4ODlmNGY2ZWU1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI1VDExNTg1NVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA3MjdmY2U3ZWI4OTI4Y2IwZjU5YTU4MDcxNjYwMTEzODU0MmViNmY2MzBlZDkyZDdjZWIxM2Y4ZWQ2ZTEyNmImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8jNR3ycilVRmnTtFjog7yvWBLqAlbYnabXJSjJbZsM8" alt="Project Image">
+            <div class="project-card-content">
+              <strong>Kyuubi Discord Bot</strong>
+              <p>A discord bot that responds to user messages in the channel of the discord server.</p>
+              <a href="https://github.com/BetelGeuseee/Discord-Bot" target="_blank" rel="noopener">View Project</a>
+            </div>
+        </div>    
+        <div class="project-card">
+            <img src="https://private-user-images.githubusercontent.com/60252466/400179113-3087bd03-63f1-45d8-a804-85f8277dbfdc.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzc4MDI4NTcsIm5iZiI6MTczNzgwMjU1NywicGF0aCI6Ii82MDI1MjQ2Ni80MDAxNzkxMTMtMzA4N2JkMDMtNjNmMS00NWQ4LWE4MDQtODVmODI3N2RiZmRjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI1VDEwNTU1N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTYxMmNjZDkwZjljOTBmNTUyM2IyYjNmOTIxNzJmMDg5MzM2YzI0MjNkNDkxYTQ0ZDc3NjcyYjQ2MjBkYWQ0MWYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Tq7iGtWZqgLGyNsEjJb6G3rAprCdLD2AvG5Q9jNewCM" alt="Project Image">
+            <div class="project-card-content">
+              <strong>Terminal Manga Reader</strong>
+              <p>A Rust-based application for reading manga in the terminal.</p>
+              <a href="https://github.com/BetelGeuseee/BetelReader" target="_blank" rel="noopener">View Project</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://private-user-images.githubusercontent.com/60252466/406659881-81cd55be-2fdc-4d3c-89b2-08946b0294a9.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzc4MDcwODksIm5iZiI6MTczNzgwNjc4OSwicGF0aCI6Ii82MDI1MjQ2Ni80MDY2NTk4ODEtODFjZDU1YmUtMmZkYy00ZDNjLTg5YjItMDg5NDZiMDI5NGE5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI1VDEyMDYyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWRiNmEyZWIzZWYzZTFlYzE2MTdkYjg2OTFkNzM3ZDhlOTA5MTA1MmQwNGRhODc1N2FkOTEyOTU5ZGMyNThhMDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.xUIM5zQ8Y6k179R6fC1s2UCnLq3PPubLHvp99V8_6bk" alt="Project Image">
+            <div class="project-card-content">
+              <strong>Pigeon</strong>
+              <p>A chat application demonstrating the use of Multithreading and Socket Programming in Java.</p>
+              <a href="https://github.com/BetelGeuseee/Pigeon" target="_blank" rel="noopener">View Project</a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-card-content">
+              <strong>dhcp-dnsmasq</strong>
+              <p>A simple DHCP server written in Rust that leverages dnsmasq for managing DHCP leases and network configurations. This project allows you to configure multiple network interfaces, set DHCP ranges, and assign static IP addresses based on MAC addresses.</p>
+              <a href="https://github.com/BetelGeuseee/dhcp-dnsmasq" target="_blank" rel="noopener">View Project</a>
+            </div>
+          </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section>
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <p>Feel free to reach out to me for collaboration or just to say hi!</p>
+        <p>Email: <a href="mailto:shirshakupadhayay182@gmail.com">shirshakupadhayay182@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/shirshak-upadhayay-b1a92924b/" target="_blank" rel="noopener">Shirshak Upadhayay</a></p>
+        <p>GitHub: <a href="https://github.com/BetelGeuseee" target="_blank" rel="noopener">BetelGeuseee</a></p>
+        <p>Discord: <a href="#" target="_blank" rel="noopener">BetelGeuseee#9674</a></p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Collaborated with ChatGPT.</p>
+  </footer>
+  <script>
+    // Theme Toggle Functionality with Local Storage
+    function toggleTheme() {
+      const currentTheme = document.body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+    // Initialize Theme based on Local Storage
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.body.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+</body>
+</html>
